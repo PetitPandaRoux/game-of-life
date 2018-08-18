@@ -13,7 +13,7 @@ const avanceTemps = (univers) => {
       } else {
         etatSuivantCellule.estVivant = peutRevivre(tableauVoisin)
         if (etatSuivantCellule.estVivant){
-          etatSuivantCellule.age = -1;
+          etatSuivantCellule.age = 1;
         } else {    
           etatSuivantCellule.age = 0;}
        
@@ -123,11 +123,11 @@ const afficherUnivers = (univers, dimensionCellule) => {
     }
   }
 
-const dict = {'-1':'green', '0':'grey', '1':"yellow", '2':'yellow', '3':'orange', '4':'orange', '5':'red'}
+const dict = { '0':'grey', '1':"green", '2':'yellow', '3':'yellow', '4':'orange', '5':'orange', '6':'red'}
 
 const dessinerCellule = (x, y, vivant, dimensionCellule, age) => {
-  if (age > 5) {
-    age = 5
+  if (age > 6) {
+    age = 6
   }
 
   ctx.save();
