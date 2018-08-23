@@ -17,25 +17,18 @@
     <body>
         <h1>Game Of Life</h1>
         <canvas id="game_of_life" width="500px" height="500px"></canvas>
-        <script type="text/javascript" src="game-of-life.js"></script>
+        <script type="text/javascript" src="script/lib.js"></script>
+        <script type="text/javascript" src="script/configuration.js"></script>
+        <script type="text/javascript" src="script/game-of-life.js"></script>
+        <script type="text/javascript" src="script/affichage.js"></script>
+        
         <script>
-            const canvas = document.getElementById("game_of_life")
-            const ctx = canvas.getContext("2d")
-            const imagesParSeconde = 10
-
-            const largeurUnivers = 30
-            const hauteurUnivers = 30
-            const nombreMaxCelluleVivante = 150
-            
-            const largeurCellule = canvas.width/largeurUnivers
-            const hauteurCellule = canvas.height/hauteurUnivers
-            const dimensionCellule = [largeurCellule, hauteurCellule]
 
             let univers = initialiseUnivers(largeurUnivers,hauteurUnivers)
 
             let tableauCelluleVivante = initialiseTableauVivantAleatoirement(nombreMaxCelluleVivante,largeurUnivers, hauteurUnivers)
 
-            let universVivant = genererUniversAvecCelluleVivante(univers, tableauCelluleVivante)
+            let universVivant = genererUniversAvecCellulesVivantes(univers, tableauCelluleVivante)
             
             const update = () => {
                 afficherUnivers(universVivant, dimensionCellule)

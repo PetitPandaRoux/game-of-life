@@ -23,6 +23,16 @@ const avanceTemps = (univers) => {
   return nouvelUnivers
 }
 
+class Cellule {
+  constructor (id, positionX, positionY) {
+    this.id = id
+    this.x = positionX
+    this.y = positionY
+    this.estVivant = false
+    this.age = 0
+  }
+} 
+
 const peutSurvivre = (tableauVoisins) => {
   let compteurVoisinVivant = 0 
 
@@ -60,23 +70,11 @@ const recenseVoisins = (univers, cellule) => {
   return univers.filter(selectionneVoisins).filter(enleveCelluleCourante)
 }
 
-const obtenirEntierAleatoire = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
-function genererCellule (id, positionX, positionY) {
-  this.id = id
-  this.x = positionX
-  this.y = positionY
-  this.estVivant = false
-  this.age = 0
-}
-
 const initialiseUnivers = (hauteur, longueur) => {
   let univers = []
   for (let positionX = 0 ; positionX < longueur ; positionX++  ){
     for (let positionY = 0 ; positionY < hauteur ; positionY++){
-      let cellule = new genererCellule(Math.floor(Math.random() * (10000 - 0 + 1)) + 0,positionX, positionY)
+      let cellule = new Cellule(Math.floor(Math.random() * (10000 - 0 + 1)) + 0,positionX, positionY)
       univers.push(cellule)
     }
   }
@@ -92,7 +90,7 @@ const donnerVieCellule = (univers, positionXRecherchee, positionYRecherchee) => 
   }
 }
 
-const genererUniversAvecCelluleVivante = (univers, tableau) => {
+const genererUniversAvecCellulesVivantes = (univers, tableau) => {
 
   for (let cellule = 0 ; cellule < tableau.length ; cellule++) {
     donnerVieCellule(univers, tableau[cellule].x, tableau[cellule].y)
@@ -113,26 +111,3 @@ const initialiseTableauVivantAleatoirement = (nombreDeCelluleVivante, largeurUni
   return tableauCelluleVivante
 }
 
-const afficherUnivers = (univers, dimensionCellule) => {
-  for (let cellule = 0 ; cellule < univers.length ; cellule++) {
-      dessinerCellule(univers[cellule].x*dimensionCellule[0], 
-                      univers[cellule].y*dimensionCellule[1], 
-                      univers[cellule].estVivant,
-                      dimensionCellule,
-                      univers[cellule].age)
-    }
-  }
-
-const dict = { '0':'grey', '1':"green", '2':'yellow', '3':'yellow', '4':'orange', '5':'orange', '6':'red'}
-
-const dessinerCellule = (x, y, vivant, dimensionCellule, age) => {
-  if (age > 6) {
-    age = 6
-  }
-
-  ctx.save();
-  ctx.fillStyle = dict[age.toString()];
-  ctx.fillRect(x, y, dimensionCellule[0], dimensionCellule[1]);
-  ctx.restore();
-  
-}
