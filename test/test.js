@@ -1,29 +1,8 @@
 const assert = require('assert');
-
-const peutSurvivre = (tableauVoisins) => {
-  let compteurVoisinVivant = 0 
-
-  for(let voisin in tableauVoisins){
-    if ( tableauVoisins[voisin].estVivant )
-    {
-      compteurVoisinVivant +=1
-    }
-  }
-  return (compteurVoisinVivant > 1 && compteurVoisinVivant < 4)
-}
-
-const recenseVoisins = (univers, cellule) => {
-  const enleveCelluleCourante = (celluleScrutee) =>
-    !(celluleScrutee.x == cellule.x && celluleScrutee.y == cellule.y)
-
-  const selectionneVoisins = (celluleScrutee) =>
-    celluleScrutee.x <= (cellule.x + 1) &&
-    celluleScrutee.x >= (cellule.x - 1) &&
-    celluleScrutee.y <= (cellule.y + 1) &&
-    celluleScrutee.y >= (cellule.y - 1)
-
-  return univers.filter(selectionneVoisins).filter(enleveCelluleCourante)
-}
+const peutSurvivre = require('../scripts/game-of-life.js').peutSurvivre;
+const recenseVoisins = require('../scripts/game-of-life.js').recenseVoisins;
+const changeAge = require('../scripts/game-of-life.js').changeAge;
+const avanceTemps = require('../scripts/game-of-life.js').avanceTemps;
 
 describe('Au jeu de la vie,', () => {
   xit('1 cellule morte reste une cellule morte !', () => {
@@ -161,5 +140,67 @@ describe('Au jeu de la vie,', () => {
     const universObtenu = avance(univers)
 
     assert.equal(JSON.stringify(universObtenu), JSON.stringify(universSuivant));
+  })
+
+  describe( 'La cellule change d\'age' , () => {
+    it('elle vieillit si ne meurs pas', () => {
+      const cellule = { x: 0, 
+                        y: 0, 
+                        estVivant: true, 
+                        age: 0 }
+      const celluleAttendue = { x: 0, 
+                                y: 0, 
+                                estVivant: true, 
+                                age: 1 }
+      const celluleVieillit = changeAge(cellule)
+
+      assert.equal(JSON.stringify(celluleVieillit), JSON.stringify(celluleAttendue))
+    })
+
+    it('elle retourne à 0 si elle meurt', () => {
+      const cellule = { x: 0, 
+                        y: 0, 
+                        estVivant: false, 
+                        age: 4 }
+      const celluleAttendue = { x: 0, 
+                                y: 0, 
+                                estVivant: false, 
+                                age: 0 }
+      const celluleVieillit = changeAge(cellule)
+
+      assert.equal(JSON.stringify(celluleVieillit), JSON.stringify(celluleAttendue))
+    })
+  })
+
+  describe('Le temps avance', () => {
+    it('cas general', () => {    
+      const univers = [
+        { x: 0, y: 0, estVivant: true,  age:0 },
+        { x: 1, y: 0, estVivant: true,  age:0 },
+        { x: 2, y: 0, estVivant: false, age:0 },
+        { x: 0, y: 1, estVivant: true,  age:0 },
+        { x: 1, y: 1, estVivant: true,  age:0 },
+        { x: 2, y: 1, estVivant: false, age:0 },
+        { x: 0, y: 2, estVivant: false, age:0 },
+        { x: 1, y: 2, estVivant: false, age:0 },
+        { x: 2, y: 2, estVivant: false, age:0 }
+      ]
+
+      const universSuivant = [
+        { x: 0, y: 0, estVivant: true,  age:1 },
+        { x: 1, y: 0, estVivant: true,  age:1 },
+        { x: 2, y: 0, estVivant: false, age:0 },
+        { x: 0, y: 1, estVivant: true,  age:1 },
+        { x: 1, y: 1, estVivant: true,  age:1 },
+        { x: 2, y: 1, estVivant: false, age:0 },
+        { x: 0, y: 2, estVivant: false, age:0 },
+        { x: 1, y: 2, estVivant: false, age:0 },
+        { x: 2, y: 2, estVivant: false, age:0 }
+
+      ]
+      const universObtenu = avanceTemps(univers)
+
+      assert.equal(JSON.stringify(universObtenu), JSON.stringify(universSuivant));
+      })
   })
 });

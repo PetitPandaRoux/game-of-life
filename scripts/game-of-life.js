@@ -4,20 +4,13 @@ const avanceTemps = (univers) => {
   for (let cellule = 0 ; cellule < univers.length ; cellule ++) {
     let etatSuivantCellule = Object.assign({},univers[cellule])
     let tableauVoisin = recenseVoisins(univers, univers[cellule])
+
       if(etatSuivantCellule.estVivant) {
         etatSuivantCellule.estVivant = peutSurvivre(tableauVoisin)
-        if (etatSuivantCellule.estVivant){
-          etatSuivantCellule.age += 1;
-        } else {    
-          etatSuivantCellule.age = 0;}
       } else {
         etatSuivantCellule.estVivant = peutRevivre(tableauVoisin)
-        if (etatSuivantCellule.estVivant){
-          etatSuivantCellule.age = 1;
-        } else {    
-          etatSuivantCellule.age = 0;}
-       
       }
+    etatSuivantCellule = changeAge(etatSuivantCellule)
     nouvelUnivers.push(etatSuivantCellule)
   }
   return nouvelUnivers
@@ -111,3 +104,13 @@ const initialiseTableauVivantAleatoirement = (nombreDeCelluleVivante, largeurUni
   return tableauCelluleVivante
 }
 
+const changeAge = (cellule) => {
+  if (cellule.estVivant){
+    cellule.age += 1 
+  } else {
+    cellule.age = 0
+  }
+  return cellule
+}
+
+module.exports = {peutSurvivre, recenseVoisins, changeAge, avanceTemps}
