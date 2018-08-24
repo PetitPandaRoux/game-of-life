@@ -20,7 +20,7 @@ class Cellule {
   constructor (positionX, positionY) {
     this.x = positionX
     this.y = positionY
-    this.estVivant = false
+    this.estVivant = Math.random() >= 0.5
     this.age = 0
   }
 } 
@@ -63,44 +63,14 @@ const recenseVoisins = (univers, cellule) => {
 }
 
 const initialiseUnivers = (hauteur, longueur) => {
-  let univers = []
+  const univers = []
   for (let positionX = 0 ; positionX < longueur ; positionX++  ){
     for (let positionY = 0 ; positionY < hauteur ; positionY++){
-      let cellule = new Cellule(positionX, positionY)
+      const cellule = new Cellule(positionX, positionY)
       univers.push(cellule)
     }
   }
   return univers;
-}
-
-const donnerVieCellule = (univers, positionXRecherchee, positionYRecherchee) => {
-  for(let cellule = 0 ; cellule < univers.length ; cellule++ ) {
-    if(univers[cellule].x == positionXRecherchee && univers[cellule].y == positionYRecherchee) {
-      univers[cellule].estVivant = true;
-      univers[cellule].age = 1 ;
-    }
-  }
-}
-
-const genererUniversAvecCellulesVivantes = (univers, tableau) => {
-
-  for (let cellule = 0 ; cellule < tableau.length ; cellule++) {
-    donnerVieCellule(univers, tableau[cellule].x, tableau[cellule].y)
-  }
-
-  return univers;
-}
-
-//La fonction peut générer la même cellule vivante
-const initialiseTableauVivantAleatoirement = (nombreDeCelluleVivante, largeurUnivers, hauteurUnivers) => {
-  let tableauCelluleVivante = []
-    for (let celluleVivante = 0 ; celluleVivante < nombreDeCelluleVivante ; celluleVivante++){
-      let cellule = {x:'', y:''}
-      cellule.x = obtenirEntierAleatoire (0, largeurUnivers)
-      cellule.y = obtenirEntierAleatoire(0, hauteurUnivers)
-      tableauCelluleVivante.push(cellule)
-    }
-  return tableauCelluleVivante
 }
 
 const changeAge = (cellule) => {

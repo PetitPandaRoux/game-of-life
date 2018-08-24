@@ -26,13 +26,9 @@
 
             let univers = initialiseUnivers(largeurUnivers,hauteurUnivers)
 
-            let tableauCelluleVivante = initialiseTableauVivantAleatoirement(nombreMaxCelluleVivante,largeurUnivers, hauteurUnivers)
-
-            let universVivant = genererUniversAvecCellulesVivantes(univers, tableauCelluleVivante)
-            
             const update = () => {
-                afficherUnivers(universVivant, dimensionCellule)
-                universVivant = avanceTemps(universVivant)
+                afficherUnivers(univers, dimensionCellule)
+                univers = avanceTemps(univers)
             }
             setInterval(update,1000/imagesParSeconde);
 
