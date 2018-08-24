@@ -17,8 +17,7 @@ const avanceTemps = (univers) => {
 }
 
 class Cellule {
-  constructor (id, positionX, positionY) {
-    this.id = id
+  constructor (positionX, positionY) {
     this.x = positionX
     this.y = positionY
     this.estVivant = false
@@ -67,7 +66,7 @@ const initialiseUnivers = (hauteur, longueur) => {
   let univers = []
   for (let positionX = 0 ; positionX < longueur ; positionX++  ){
     for (let positionY = 0 ; positionY < hauteur ; positionY++){
-      let cellule = new Cellule(Math.floor(Math.random() * (10000 - 0 + 1)) + 0,positionX, positionY)
+      let cellule = new Cellule(positionX, positionY)
       univers.push(cellule)
     }
   }
