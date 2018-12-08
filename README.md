@@ -1,4 +1,37 @@
-# game-of-life
+# GAME OF LIFE
+
+## ENG
+
+### CONTEXT 
+
+Game of life is an exercice from http://codingdojo.org/kata/GameOfLife/ .It is a game where you model cells following certains rules. 
+
+In our case the rule are :
+- A living cell surounded by less than 2 neighboor living cell, died in the next round (underpopulation)
+- A living cell surrounded by more than 3 neighboor living cell, died in the next round (overpopulation)
+- A living cell surounded by 2 or 3 living cell survive the next round
+- A dead cell surdounded by exactly 3 livin cell come back to life the next round
+
+I dit everything in Canvas using javascript. In this version you can see how long a cellule is alive by colors :
+- Green : Just alive
+- Yellow : Young, alive for 2 rounds
+- Orange : adults, alive for 3 or 4 rounds
+- Red : Alive more than 5 rounds, most of the time they became stable
+
+### TEST
+
+You can test my game of life here :
+
+### NEXT ITERATIONS 
+
+- Refactoring of code 
+- Writting everything using modern Javascript instead of actual ES5
+- Let user choose parameter (number of cell alive at the beginning, round interval....)
+
+
+## FR
+
+### CONTEXTE
 
 ## Résultat d'un kata provenant :
 http://codingdojo.org/kata/GameOfLife/
