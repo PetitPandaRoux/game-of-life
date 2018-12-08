@@ -3,18 +3,17 @@ h1 {
 }
 
 canvas {
-  display: block;
-  margin:auto;
   border: 1px black solid;
 }
 
 .game {
   display:flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
 }
 
 .parametre{
   text-align: left;
-  margin:100px;
+  margin:10px;
 }
