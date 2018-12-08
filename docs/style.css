@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+
+canvas {
+  border: 1px black solid;
+}
+
+.game {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.parametre{
+  text-align: left;
+  margin:10px;
+}
