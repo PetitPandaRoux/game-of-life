@@ -1,8 +1,6 @@
-# GAME OF LIFE
+# GAME OF LIFE - ENG
 
-## ENG
-
-### CONTEXT 
+## CONTEXT 
 
 Game of life is an exercice from http://codingdojo.org/kata/GameOfLife/ .It is a game where you model cells following certains rules. 
 
@@ -20,32 +18,32 @@ I dit everything in Canvas using javascript. In this version you can see how lon
 
 ### TEST
 
-You can test my game of life here :
+You can test my game of life here :https://petitpandaroux.github.io/game-of-life/
 
-### NEXT ITERATIONS 
+## NEXT ITERATIONS 
 
 - Refactoring of code 
 - Writting everything using modern Javascript instead of actual ES5
 - Let user choose parameter (number of cell alive at the beginning, round interval....)
 
 
-## FR
+# GAME OF LIFE - ENG
 
-### CONTEXTE
+## CONTEXTE
 
-## Résultat d'un kata provenant :
+### Résultat d'un kata provenant :
 http://codingdojo.org/kata/GameOfLife/
 
 et à partir d'une séance au Rookie-Club:
 https://github.com/Rookie-Club/katas/tree/gameOfLife/nodejs
 
-## Les règles du jeu :
+### Les règles du jeu :
   1 : Une cellule viante avec moins de deux voisins vivant, meurs au tour suivant(sous-population)
   2 : Une cellule vivante avec plus de trois voisins vivant, meurs au tour suivant(surpopulation)
   3 : Une cellule vivante avec 2 ou 3 voisins vivants, survie au tour suivant
   4 : Une cellule morte, entouré de trois cellule vivante exactement revient à la vie au tour suivant
 
-## On distingue l'âge des cellule :
+### On distingue l'âge des cellule :
 - Verte elles reviennent à la vie
 - Jaune elles sont jeune
 - Orange elles sont adulte
@@ -58,12 +56,11 @@ https://github.com/Rookie-Club/katas/tree/gameOfLife/nodejs
  npm test
  ```
 
-## Refactorisations possibles :
+## PLUS TARD :
 Réécrire les tests de manière à refactoriser de manière tranquille
 Intégrer les fonctions peutSurvivre comme méthode de la classe cellule,
 Créer un mega object de type jeu qui aura la responsabilité de gérer l'affichage par exemple et de se mettre à jour,
 
 
 Il suffit de lancer l'index dans le navigateur pour lancer le jeu
-Une version est aussi disponible :
-http://www.mo-lab.fr/experience.html
+Une version est aussi disponible :https://petitpandaroux.github.io/game-of-life/
