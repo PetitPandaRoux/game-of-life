@@ -27,7 +27,7 @@ You can test my game of life here :https://petitpandaroux.github.io/game-of-life
 - Let user choose parameter (number of cell alive at the beginning, round interval....)
 
 
-# GAME OF LIFE - ENG
+# GAME OF LIFE - FR
 
 ## CONTEXTE
 
