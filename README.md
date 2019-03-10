@@ -24,7 +24,7 @@ You can test my game of life here :https://petitpandaroux.github.io/game-of-life
 
 - Refactoring of code 
 - Writting everything using modern Javascript instead of actual ES5
-- Let user choose parameter (number of cell alive at the beginning, round interval....)
+- Let users choose parameter (number of cell alive at the beginning, round interval, maybe even which cell should be alive....)
 
 
 # GAME OF LIFE - FR
