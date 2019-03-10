@@ -16,7 +16,7 @@ I dit everything in Canvas using javascript. In this version you can see how lon
 - Orange : adults, alive for 3 or 4 rounds
 - Red : Alive more than 5 rounds, most of the time they became stable
 
-### TEST
+## SEE THE SIMULATION
 
 You can test my game of life here :https://petitpandaroux.github.io/game-of-life/
 
@@ -55,6 +55,10 @@ https://github.com/Rookie-Club/katas/tree/gameOfLife/nodejs
  npm install mocha
  npm test
  ```
+ 
+## Voir la simulation :
+Il suffit de lancer l'index dans le navigateur pour lancer le jeu
+Une version est aussi disponible :https://petitpandaroux.github.io/game-of-life/
 
 ## PLUS TARD :
 Réécrire les tests de manière à refactoriser de manière tranquille
@@ -62,5 +66,3 @@ Intégrer les fonctions peutSurvivre comme méthode de la classe cellule,
 Créer un mega object de type jeu qui aura la responsabilité de gérer l'affichage par exemple et de se mettre à jour,
 
 
-Il suffit de lancer l'index dans le navigateur pour lancer le jeu
-Une version est aussi disponible :https://petitpandaroux.github.io/game-of-life/
